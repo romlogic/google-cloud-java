@@ -21,7 +21,7 @@ This library supports the following Google Cloud Platform services with clients 
 -  [Stackdriver Logging](google-cloud-clients/google-cloud-logging) (GA)
 -  [Stackdriver Monitoring](google-cloud-clients/google-cloud-monitoring) (GA)
 
-This library supports the following Google Cloud Platform services with clients at a [Beta](#versioning) quality level:
+This library the following Google Cloud Platform services with clients at a [Beta](#versioning) quality level:
 
 -  [BigQuery Data Transfer](google-cloud-clients/google-cloud-bigquerydatatransfer) (Beta)
 -  [Cloud Asset](google-cloud-clients/google-cloud-asset) (Beta)
