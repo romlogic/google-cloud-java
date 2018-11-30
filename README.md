@@ -57,10 +57,10 @@ Quickstart
 
 To call any of the supported Google Cloud Services simply add a corresponding client library 
 artifact as a dependency to your project. The following instructions use `google-cloud-storage` 
-as an example (specific instructions can be found in the README of each client).
+as an example (You can find specific instructions in the README of each client).
 
 [//]: # ({x-version-update-start:google-cloud-bom:released})
-If you are using Maven, add this to your pom.xml file
+If you are using Maven, add the following to your pom.xml file:
 ```xml
   <dependencyManagement>
     <dependencies>
@@ -84,11 +84,11 @@ If you are using Maven, add this to your pom.xml file
 [//]: # ({x-version-update-end})
 
 [//]: # ({x-version-update-start:google-cloud-storage:released})
-If you are using Gradle, add this to your dependencies
+If you are using Gradle, add the following to your dependencies:
 ```Groovy
 compile 'com.google.cloud:google-cloud-storage:1.54.0'
 ```
-If you are using SBT, add this to your dependencies
+If you are using SBT, add the following to your dependencies:
 ```Scala
 libraryDependencies += "com.google.cloud" % "google-cloud-storage" % "1.54.0"
 ```
@@ -100,9 +100,9 @@ If you're using IntelliJ or Eclipse, you can add client libraries to your projec
 
 Besides adding client libraries, the plugins provide additional functionality, such as service account key management. Refer to the documentation for each plugin for more details.
 
-These client libraries can be used on App Engine standard for Java 8 runtime and App Engine flexible (including the Compat runtime).  Most of the libraries do not work on the App Engine standard for Java 7 runtime. However, Datastore, Storage, and Bigquery should work.
+You can use these ckient libraries on App Engine standard for Java 8 runtime and App Engine flexible (including the Compat runtime).  Most of the libraries do not work on the App Engine standard for Java 7 runtime. However, Datastore, Storage, and Bigquery should work.
 
-If you are running into problems with version conflicts, the easiest way to solve the conflicts is to use google-cloud's BOM. In Maven, add the following to your POM:
+If you run into problems with version conflicts, use google-cloud's BOM. In Maven, add the following to your POM:
 
 [//]: # ({x-version-update-start:google-cloud-bom:released})
 ```xml
@@ -127,21 +127,21 @@ Specifying a Project ID
 
 Most `google-cloud` libraries require a project ID.  There are multiple ways to specify this project ID.
 
-1. When using `google-cloud` libraries from within Compute/App Engine, there's no need to specify a project ID.  It is automatically inferred from the production environment.
-2. When using `google-cloud` elsewhere, you can do one of the following:
-  * Supply the project ID when building the service options.  For example, to use Datastore from a project with ID "PROJECT_ID", you can write:
+1. When you use `google-cloud` libraries from within Compute/App Engine, there's no need to specify a project ID.  It automatically infers from the production environment.
+2. When you use `google-cloud` elsewhere, do one of the following:
+  * Supply the project ID when you build the service options.  For example, to use Datastore from a project with ID "PROJECT_ID", write:
 
   ```java
   Datastore datastore = DatastoreOptions.newBuilder().setProjectId("PROJECT_ID").build().getService();
   ```
-  * Specify the environment variable `GOOGLE_CLOUD_PROJECT` to be your desired project ID.
+  * Specify the environment variable `GOOGLE_CLOUD_PROJECT` to your desired project ID.
   * Set the project ID using the [Google Cloud SDK](https://cloud.google.com/sdk/?hl=en).  To use the SDK, [download the SDK](https://cloud.google.com/sdk/?hl=en) if you haven't already, and set the project ID from the command line.  For example:
 
   ```
   gcloud config set project PROJECT_ID
   ```
 
-`google-cloud` determines the project ID from the following sources in the listed order, stopping once it finds a value:
+`google-cloud` determines the project ID from the following sources in the listed order, and stops once it finds a value:
 
 1. The project ID supplied when building the service options
 2. Project ID specified by the environment variable `GOOGLE_CLOUD_PROJECT`
@@ -149,7 +149,7 @@ Most `google-cloud` libraries require a project ID.  There are multiple ways to 
 4. The project ID specified in the JSON credentials file pointed by the `GOOGLE_APPLICATION_CREDENTIALS` environment variable
 5. The Google Cloud SDK project ID
 
-In cases where the library may expect a project ID explicitly, we provide a helper that can provide the inferred project ID:
+In cases where the library may expect a project ID explicitly, provide a helper that can provide the inferred project ID:
    ```java
      import com.google.cloud.ServiceOptions;
      ...
@@ -166,27 +166,27 @@ see the project's [README](https://github.com/google/google-auth-library-java/bl
 and [javadoc](http://google.github.io/google-auth-library-java/releases/0.6.0/apidocs/) for more
 details.
 
-To access Google Cloud services, you first need to ensure that the necessary Google Cloud APIs are
+To access Google Cloud services, make sure that the necessary Google Cloud APIs are
 enabled for your project. To do this, follow the instructions on the
 [authentication document](https://github.com/googleapis/google-cloud-common/blob/master/authentication/readme.md#authentication)
 shared by all the Google Cloud language libraries.
 
 Next, choose a method for authenticating API requests from within your project:
 
-1. When using `google-cloud` libraries from within Compute/App Engine, no additional authentication
+1. When you use `google-cloud` libraries from within Compute/App Engine, no additional authentication
 steps are necessary. For example:
 ```java
 Storage storage = StorageOptions.getDefaultInstance().getService();
 ```
-2. When using `google-cloud` libraries elsewhere, there are several options:
+2. When you use `google-cloud` libraries elsewhere, there are several options:
   * [Generate a JSON service account key](https://cloud.google.com/storage/docs/authentication?hl=en#service_accounts).
-  After downloading that key, you must do one of the following:
+  After downloading that key, do one of the following:
     * Define the environment variable GOOGLE_APPLICATION_CREDENTIALS to be the location of the key.
     For example:
     ```bash
     export GOOGLE_APPLICATION_CREDENTIALS=/path/to/my/key.json
     ```
-    * Supply the JSON credentials file when building the service options. For example, this Storage
+    * Supply the JSON credentials file when you build the service options. For example, this Storage
     object has the necessary permissions to interact with your Google Cloud Storage data:
     ```java
     Storage storage = StorageOptions.newBuilder()
@@ -194,11 +194,11 @@ Storage storage = StorageOptions.getDefaultInstance().getService();
         .build()
         .getService();
     ```
-  * If running locally for development/testing, you can use the
+  * If you run locally for development/testing, use the
   [Google Cloud SDK](https://cloud.google.com/sdk/). Create Application Default Credentials with
-  `gcloud auth application-default login`, and then `google-cloud` will automatically detect such
+  `gcloud auth application-default login`, and then `google-cloud` automatically detects such
   credentials.
-  * If you already have an OAuth2 access token, you can use it to authenticate (notice that in this
+  * If you have an OAuth2 access token, use it to authenticate (notice that in this
   case, the access token will not be automatically refreshed):
   ```java
   Storage storage = StorageOptions.newBuilder()
@@ -207,8 +207,8 @@ Storage storage = StorageOptions.getDefaultInstance().getService();
       .getService();
   ```
 
-If no credentials are provided, `google-cloud` will attempt to detect them from the environment
-using `GoogleCredentials.getApplicationDefault()` which will search for Application Default
+If no credentials are provided, `google-cloud` attempts to detect them from the environment
+using `GoogleCredentials.getApplicationDefault()`, which will search for Application Default
 Credentials in the following locations (in order):
 
 1. The credentials file pointed to by the `GOOGLE_APPLICATION_CREDENTIALS` environment variable
@@ -227,11 +227,11 @@ Using a proxy
 Clients in this repository use either HTTP or gRPC for the transport layer.
 The README of each client documents the transport layer the client uses.
 
-For HTTP clients, a proxy can be configured by using `http.proxyHost` and
+For HTTP clients, configure a proxy by using `http.proxyHost` and
 related system properties as documented by
 [Java Networking and Proxies](https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html).
 
-For gRPC clients, a proxy can be configured by using the
+For gRPC clients, configure a proxy by using the
 `GRPC_PROXY_EXP` environment variable as documented by
 the gRPC [release notes](https://github.com/grpc/grpc-java/releases/tag/v1.0.3).
 Please note that gRPC proxy support is currently experimental.
@@ -289,8 +289,8 @@ additional qualifications:
 
 1. Components marked with `@BetaApi` are considered to be "0.x" features inside
    a "1.x" library. This means they can change between minor and patch releases
-   in incompatible ways. These features should not be used by any library "B"
-   that itself has consumers, unless the components of library B that use
+   in incompatible ways. Do not use these features if any library "B"
+   itself has consumers, unless the components of library B that use
    `@BetaApi` features are also marked with `@BetaApi`. Features marked as
    `@BetaApi` are on a path to eventually become "1.x" features with the marker
    removed.
@@ -298,19 +298,19 @@ additional qualifications:
    **Special exception for google-cloud-java**: google-cloud-java is
    allowed to depend on `@BetaApi` features in gax-java without declaring the consuming
    code `@BetaApi`, because gax-java and google-cloud-java move in step
-   with each other. For this reason, gax-java should not be used
+   with each other. For this reason, do not use gax-java 
    independently of google-cloud-java.
 
-1. Components marked with `@InternalApi` are technically public, but are only
-   public for technical reasons, because of the limitations of Java's access
-   modifiers. For the purposes of semver, they should be considered private.
+1. Components marked with `@InternalApi` are public only
+   for technical reasons, because of the limitations of Java's access
+   modifiers. For the purposes of semver, consider them private.
 
-Please note it is currently under active development. Any release versioned 0.x.y is
+Please note, it is currently under active development. Any release versioned 0.x.y is
 subject to backwards incompatible changes at any time.
 
 **GA**: Libraries defined at a GA quality level are expected to be stable and all updates in the
-libraries are guaranteed to be backwards-compatible. Any backwards-incompatible changes will lead
-to the major version increment (1.x.y -> 2.0.0).
+libraries are guaranteed to be backwards-compatible. Any backwards-incompatible changes leads
+to major version increment (1.x.y -> 2.0.0).
 
 **Beta**: Libraries defined at a Beta quality level are expected to be mostly stable and
 we're working towards their release candidate. We will address issues and requests with
@@ -332,8 +332,8 @@ following table as a reference to make sure that your versions are compatible. D
 * **gax**: The version of com.google.api:gax
 * **gax-grpc**: The version of com.google.api:gax-grpc
 
-Something to be aware of is that a package can be promoted from alpha -> beta or beta -> GA between versions, which
-means that after a certain point for any given package, the alpha or beta version won't be valid any more.
+Note that a package can be promoted from alpha -> beta or beta -> GA between versions, which
+means that after a certain point for any given package, the alpha or beta versions are not valid any more.
 
 alpha         | beta         | GA         | gax        | gax-grpc
 ------------- | ------------ | ---------- | ---------- | --------
