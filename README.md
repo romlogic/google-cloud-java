@@ -55,7 +55,7 @@ This library supports the following Google Cloud Platform services with clients 
 Quickstart
 ----------
 
-To call any of the supported Google Cloud Services simply add a corresponding client library 
+To call any of the supported Google Cloud Services, simply add a corresponding client library 
 artifact as a dependency to your project. The following instructions use `google-cloud-storage` 
 as an example (You can find specific instructions in the README of each client).
 
