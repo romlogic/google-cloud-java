@@ -255,7 +255,7 @@ public class ITGcsNio {
     try {
       Files.copy(source, dest);
       Assert.fail("Shouldn't have been able to copy from " + sdesc + " to " + ddesc);
-      // for some reason this throws "GoogleJsonResponseException" instead of "StorageException"
+      // for some reason, this throws "GoogleJsonResponseException" instead of "StorageException"
       // when going from requester pays bucket to requester pays bucket, but otherwise we get a
       // normal StorageException.
     } catch (HttpResponseException hex) {
